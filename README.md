@@ -1,116 +1,118 @@
-# Dự Án Cộng Hai Số Lớn (MyBigNumber Workspace) - Phiên bản 0.0.1
+# MyBigNumber Workspace - Dự Án Cộng Hai Số Nguyên Lớn
 
-Dự án cài đặt thuật toán cộng hai số lớn dưới dạng chuỗi mô phỏng phương pháp "đặt tính rồi tính" của học sinh tiểu học, được tổ chức dưới dạng Maven Multi-Module gồm phần thuật toán lõi (Core) và ứng dụng Web tương tác (Spring Boot + Thymeleaf + Bootstrap).
-
----
-
-## 1. Giới thiệu tổng quan (Introduction)
-
-Dự án được chia làm 2 giai đoạn (Tasks):
-1. **Task 1 (Core Engine):** Cài đặt lớp lõi `MyBigNumber` với phương thức `sum(String stn1, String stn2)`. Thuật toán duyệt từ phải sang trái, cộng từng cặp ký số kèm biến nhớ và ghi nhận nhật ký (Logging) chi tiết từng bước. Nếu dữ liệu đầu vào chứa chữ cái hoặc ký tự không hợp lệ, hệ thống sẽ chủ động ném ngoại lệ `IllegalArgumentException`. Kèm theo bộ Unit Test sử dụng JUnit 5 kiểm thử cả các trường hợp hợp lệ và dữ liệu chứa ký tự lạ.
-2. **Task 2 (Web Application):** Phát triển ứng dụng Web giao diện người dùng bằng Spring Boot, Thymeleaf và Bootstrap 5. Module Web tái sử dụng module Core như một sub-module thư viện và hiển thị trực quan bảng tiến trình từng bước tính toán.
+Hệ thống quản lý và triển khai thuật toán cộng hai số nguyên lớn không giới hạn độ dài, mô phỏng phương pháp tính toán cột dọc của học sinh tiểu học. Dự án được thiết kế theo kiến trúc **Maven Multi-Module (Monorepo)**, tích hợp sẵn module thư viện lõi và module ứng dụng web giao diện người dùng.
 
 ---
 
-## 2. Yêu cầu hệ thống (Prerequisites)
-
-- **Java Development Kit (JDK):** Phiên bản 21 trở lên (LTS).
-- **Apache Maven:** Phiên bản 3.8.x trở lên.
-- **Trình duyệt web:** Chrome, Firefox, Edge, Safari,...
+## 1. Mục lục
+1. [Giới thiệu tổng quan](#2-giới-thiệu-tổng-quan)
+2. [Cấu trúc Multi-Module](#3-cấu-trúc-multi-module)
+3. [Yêu cầu môi trường](#4-yêu-cầu-môi-trường)
+4. [Hướng dẫn cài đặt và thực thi](#5-hướng-dẫn-cài-đặt-và-thực-thi)
+5. [Quy ước Clone và thẩm định độc lập](#6-quy-ước-clone-và-thẩm-định-độc-lập)
+6. [Thông tin phát hành (Release & Tag)](#7-thông-tin-phát-hành-release--tag)
 
 ---
 
-## 3. Cấu trúc thư mục dự án (Project Architecture)
+## 2. Giới thiệu tổng quan
 
-Dự án áp dụng mô hình **Maven Multi-Module (Monorepo)**:
+Dự án được phân rã thành hai nhiệm vụ chính:
+* **Task 1 (`my-big-number-core`):** Thư viện tính toán lõi cung cấp thuật toán cộng hai số dạng chuỗi, áp dụng cơ chế ghi nhận nhật ký (`java.util.logging.Logger`), kiểm soát dữ liệu đầu vào nghiêm ngặt và ném ngoại lệ `IllegalArgumentException` khi phát hiện ký tự không hợp lệ. Module đi kèm bộ kiểm thử tự động toàn diện với **JUnit 5**.
+* **Task 2 (`my-big-number-web`):** Ứng dụng web trực quan xây dựng trên nền tảng **Spring Boot 3**, **Thymeleaf** và **Bootstrap 5**, tái sử dụng thư viện lõi từ Task 1 và trực quan hóa từng bước thực hiện phép toán theo bảng tiến trình thời gian thực.
+
+---
+
+## 3. Cấu trúc Multi-Module
 
 ```text
 big-number-workspace/
-├── pom.xml                                   # Root POM quản lý phiên bản và build
-├── README.md                                 # Tài liệu dự án
+├── pom.xml                                  # Root POM: quản lý phiên bản, plugin và dependency chung
+├── README.md                                # Tài liệu tổng quan toàn dự án (file này)
+├── request.md                               # Hồ sơ đặc tả yêu cầu chi tiết của Task 1 và Task 2
+├── .gitignore                               # Cấu hình loại trừ file rác, target, .idea
 │
-├── my-big-number-core/                       # Sub-module Task 1: Thuật toán lõi
+├── my-big-number-core/                      # Sub-module Task 1: Thư viện tính toán lõi
 │   ├── pom.xml
+│   ├── README.md                            # Tài liệu kỹ thuật chi tiết của Core Module
 │   └── src/
 │       ├── main/java/com/bignumber/core/
-│       │   ├── CalculationResult.java        # Record lưu kết quả và danh sách các bước
-│       │   ├── CalculationStep.java          # Model mô tả chi tiết từng bước cộng
-│       │   └── MyBigNumber.java              # Lớp lõi xử lý phép toán và logging
+│       │   ├── CalculationStep.java         # Model chi tiết từng bước tính toán
+│       │   ├── CalculationResult.java       # Record đóng gói kết quả tổng thể
+│       │   └── MyBigNumber.java             # Thuật toán cộng, logging và ném ngoại lệ
 │       └── test/java/com/bignumber/core/
-│           └── MyBigNumberTest.java          # Unit Test (JUnit 5 + Parameterized Test)
+│           └── MyBigNumberTest.java         # Kiểm thử tự động (JUnit 5 Parameterized Tests)
 │
-└── my-big-number-web/                        # Sub-module Task 2: Ứng dụng Web
+└── my-big-number-web/                       # Sub-module Task 2: Ứng dụng Web giao diện
     ├── pom.xml
+    ├── README.md                            # Hướng dẫn chạy và tương tác với Web App
     └── src/
         ├── main/
         │   ├── java/com/bignumber/web/
-        │   │   ├── BigNumberWebApplication.java   # Spring Boot Application Launcher
+        │   │   ├── BigNumberWebApplication.java  # Lớp khởi chạy Spring Boot & cấu hình Bean
         │   │   ├── controller/
-        │   │   │   └── BigNumberController.java   # Xử lý Request & trả View
+        │   │   │   └── BigNumberController.java  # Controller tiếp nhận và render dữ liệu
         │   │   └── dto/
-        │   │       └── CalculationRequest.java    # DTO nhận form & Bean Validation
+        │   │       └── CalculationRequest.java   # DTO validation dữ liệu người dùng nhập
         │   └── resources/
-        │       ├── application.properties         # Cấu hình Spring Boot
+        │       ├── application.properties        # Cấu hình Spring Boot và web server
         │       └── templates/
-        │           └── index.html                 # Giao diện Thymeleaf + Bootstrap 5
+        │           └── index.html                # Giao diện Thymeleaf + Bootstrap 5
         └── test/
 ```
 
 ---
 
-## 4. Hướng dẫn biên dịch và khởi chạy (Getting Started)
+## 4. Yêu cầu môi trường
 
-### Bước 1: Build và cài đặt module Core vào kho cục bộ (Bắt buộc)
-Trước khi chạy ứng dụng Web, cần thực hiện lệnh `install` tại thư mục gốc để Maven biên dịch và đưa gói `my-big-number-core` vào Local Repository (`.m2`):
+* **Java Development Kit (JDK):** Phiên bản 21 trở lên (LTS).
+* **Apache Maven:** Phiên bản 3.8.x trở lên.
+* **Trình duyệt web:** Google Chrome, Mozilla Firefox, Microsoft Edge hoặc Safari.
+
+---
+
+## 5. Hướng dẫn cài đặt và thực thi
+
+### Bước 1: Build và cài đặt gói lõi vào kho nội bộ
+Trước khi khởi động ứng dụng Web, Maven cần biên dịch và đưa artifact `my-big-number-core` vào Local Repository (`.m2`). Tại thư mục gốc của dự án, chạy lệnh:
 
 ```bash
-# Đứng tại thư mục gốc của dự án
 mvn clean install
 ```
 
-> **Lưu ý khắc phục lỗi dependency/offline:**
-> Nếu gặp lỗi `The POM for com.bignumber:my-big-number-core:jar:0.0.1 is missing` hoặc lỗi chế độ offline trong IntelliJ IDEA:
-> 1. Vào **File** -> **Settings** -> **Build, Execution, Deployment** -> **Build Tools** -> **Maven**.
-> 2. Bỏ chọn ô **Work offline** (nếu đang bật).
-> 3. Chạy lại lệnh `mvn clean install` trên Terminal.
+> **Ghi chú khắc phục lỗi kết nối:** Nếu gặp lỗi `Could not resolve dependencies` hoặc `Cannot access central in offline mode`:
+> 1. Mở IDE (IntelliJ IDEA) $\rightarrow$ **File** $\rightarrow$ **Settings** $\rightarrow$ **Build, Execution, Deployment** $\rightarrow$ **Build Tools** $\rightarrow$ **Maven**.
+> 2. Bỏ tích chọn ô **Work offline**.
+> 3. Chạy lại `mvn clean install` trên Terminal.
 
-### Bước 2: Thực thi Unit Test (Task 1)
-Để kiểm tra các ca kiểm thử thuật toán và xác nhận việc ném ngoại lệ khi gặp ký tự sai:
+### Bước 2: Chạy bộ kiểm thử tự động (Unit Tests)
+Để chạy toàn bộ các test case hợp lệ và test case ném ngoại lệ của thư viện lõi:
 
 ```bash
 mvn test
 ```
-*Hoặc chỉ chạy test cho riêng module Core:*
-```bash
-mvn --projects my-big-number-core test
-```
 
-### Bước 3: Khởi chạy ứng dụng Web (Task 2)
-Có 2 cách khởi chạy:
+### Bước 3: Khởi chạy ứng dụng Web
+Có thể khởi động ứng dụng Web bằng một trong hai cách:
 
-- **Cách 1: Dùng Maven plugin từ Terminal (khuyên dùng):**
+* **Cách 1: Dùng Maven plugin (khuyên dùng cho môi trường phát triển):**
   ```bash
   mvn --projects my-big-number-web spring-boot:run
   ```
 
-- **Cách 2: Chạy trực tiếp từ file JAR đã đóng gói:**
+* **Cách 2: Chạy trực tiếp từ file JAR đã đóng gói:**
   ```bash
-  mvn clean package -DskipTests
   java -jar my-big-number-web/target/my-big-number-web-0.0.1.jar
   ```
 
-Sau khi ứng dụng khởi động xong (cổng mặc định `8084`), hãy mở trình duyệt và truy cập:
-```text
-http://localhost:8084
-```
+Mở trình duyệt và truy cập vào địa chỉ: `http://localhost:8084`.
 
 ---
 
-## 5. Quy ước Clone mã nguồn từ Git (Submission Guidelines)
+## 6. Quy ước Clone và thẩm định độc lập
 
-Sau khi đưa mã nguồn lên Git Server (GitHub/GitLab), người khác hoặc giảng viên có thể clone và kiểm thử dự án về máy theo đúng đường dẫn quy ước:
+Nhằm mô phỏng quá trình đánh giá và nghiệm thu dự án từ người khác, toàn bộ mã nguồn phải được clone về máy cục bộ theo cấu trúc thư mục quy ước:
 
-### Đối với người dùng Windows:
+### Hệ điều hành Windows:
 ```cmd
 mkdir D:\Projects\github.com\<youraccount>
 cd /d D:\Projects\github.com\<youraccount>
@@ -120,7 +122,7 @@ mvn clean install
 mvn --projects my-big-number-web spring-boot:run
 ```
 
-### Đối với người dùng macOS / Linux:
+### Hệ điều hành macOS / Linux:
 ```bash
 mkdir -p ~/Projects/github.com/<youraccount>
 cd ~/Projects/github.com/<youraccount>
@@ -132,11 +134,12 @@ mvn --projects my-big-number-web spring-boot:run
 
 ---
 
-## 6. Gắn Tag phát hành phiên bản (Git Release Tag)
+## 7. Thông tin phát hành (Release & Tag)
 
-Dự án được đánh dấu phiên bản đánh giá là `0.0.1`:
-
-```bash
-git tag -a 0.0.1 -m "Release version 0.0.1: Complete Task 1 and Task 2"
-git push origin --tags
-```
+Phiên bản bàn giao chuẩn được gắn tag chính thức:
+* **Release Version:** `0.0.1`
+* **Lệnh tạo tag:**
+  ```bash
+  git tag -a 0.0.1 -m "Release version 0.0.1: Complete Task 1 and Task 2"
+  git push origin 0.0.1
+  ```
