@@ -54,6 +54,8 @@ Contract chính thức nằm tại `C:\my-big-number\docs\api-spec.md`.
 - `C:\my-big-number\my-big-number-web\src\main\java\com\bignumber\web\controller\BigNumberRestController.java`
 - `C:\my-big-number\my-big-number-web\src\main\java\com\bignumber\web\dto\CalculationApiRequest.java`
 - `C:\my-big-number\my-big-number-web\src\main\java\com\bignumber\web\dto\CalculationApiResponse.java`
+- `C:\my-big-number\my-big-number-web\src\main\java\com\bignumber\web\dto\CalculationStepDto.java`
+- `C:\my-big-number\my-big-number-web\src\main\java\com\bignumber\web\dto\ProblemDetailResponse.java`
 - `C:\my-big-number\my-big-number-web\src\main\java\com\bignumber\web\exception\ApiExceptionHandler.java`
 - `C:\my-big-number\my-big-number-web\src\test\java\com\bignumber\web\controller\BigNumberRestControllerTest.java`
 

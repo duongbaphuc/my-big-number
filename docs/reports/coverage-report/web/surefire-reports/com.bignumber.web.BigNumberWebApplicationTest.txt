@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.bignumber.web.BigNumberWebApplicationTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.611 s -- in com.bignumber.web.BigNumberWebApplicationTest

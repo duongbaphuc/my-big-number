@@ -6,9 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class MyBigNumberTest {
 
@@ -214,5 +212,34 @@ class MyBigNumberTest {
         assertEquals(res1.hashCode(), res2.hashCode());
         assertEquals(res1, res2);
         org.junit.jupiter.api.Assertions.assertNotEquals(res1, res3);
+    }
+
+    @Test
+    @DisplayName("Kiểm thử đầy đủ equals, hashCode và toString của CalculationStep")
+    void testCalculationStepMethods() {
+        CalculationStep s1 = new CalculationStep(1, "desc", "res", 0);
+        CalculationStep s2 = new CalculationStep(1, "desc", "res", 0);
+        CalculationStep sDiffNum = new CalculationStep(2, "desc", "res", 0);
+        CalculationStep sDiffCarry = new CalculationStep(1, "desc", "res", 1);
+        CalculationStep sDiffDesc = new CalculationStep(1, "other", "res", 0);
+        CalculationStep sDiffRes = new CalculationStep(1, "desc", "other", 0);
+
+        // Branch this == o
+        assertEquals(s1, s1);
+        // Branch o == null
+        assertNotEquals(s1, null);
+        // Branch getClass() != o.getClass()
+        assertNotEquals(s1, "some-string");
+        // Same values
+        assertEquals(s1, s2);
+        assertEquals(s1.hashCode(), s2.hashCode());
+        // Different fields
+        assertNotEquals(s1, sDiffNum);
+        assertNotEquals(s1, sDiffCarry);
+        assertNotEquals(s1, sDiffDesc);
+        assertNotEquals(s1, sDiffRes);
+        // toString
+        assertNotNull(s1.toString());
+        assertTrue(s1.toString().contains("CalculationStep"));
     }
 }

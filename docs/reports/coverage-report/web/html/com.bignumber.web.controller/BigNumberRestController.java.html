@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BigNumberRestController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">My Big Number Web (Task 2)</a> &gt; <a href="index.source.html" class="el_package">com.bignumber.web.controller</a> &gt; <span class="el_source">BigNumberRestController.java</span></div><h1>BigNumberRestController.java</h1><pre class="source lang-java linenums">package com.bignumber.web.controller;
+
+import com.bignumber.core.CalculationResult;
+import com.bignumber.core.MyBigNumber;
+import com.bignumber.web.dto.CalculationApiRequest;
+import com.bignumber.web.dto.CalculationApiResponse;
+import com.bignumber.web.dto.CalculationStepDto;
+import jakarta.validation.Valid;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Collections;
+import java.util.List;
+
+@RestController
+@RequestMapping(&quot;/api/calculations&quot;)
+public class BigNumberRestController {
+
+    private final MyBigNumber myBigNumber;
+
+<span class="fc" id="L25">    public BigNumberRestController(MyBigNumber myBigNumber) {</span>
+<span class="fc" id="L26">        this.myBigNumber = myBigNumber;</span>
+<span class="fc" id="L27">    }</span>
+
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity&lt;CalculationApiResponse&gt; calculate(
+            @Valid @RequestBody CalculationApiRequest request) {
+
+<span class="fc" id="L33">        boolean includeSteps = Boolean.TRUE.equals(request.getIncludeSteps());</span>
+
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        if (!includeSteps) {</span>
+<span class="fc" id="L36">            String sum = myBigNumber.sum(request.getNum1(), request.getNum2());</span>
+<span class="fc" id="L37">            CalculationApiResponse response = new CalculationApiResponse(sum, Collections.emptyList());</span>
+<span class="fc" id="L38">            return ResponseEntity.ok(response);</span>
+        }
+
+<span class="fc" id="L41">        CalculationResult result = myBigNumber.sumWithProgress(request.getNum1(), request.getNum2());</span>
+
+<span class="fc" id="L43">        List&lt;CalculationStepDto&gt; steps = result.steps().stream()</span>
+<span class="fc" id="L44">                .map(step -&gt; new CalculationStepDto(</span>
+<span class="fc" id="L45">                        step.getStepNumber(),</span>
+<span class="fc" id="L46">                        step.getDescription(),</span>
+<span class="fc" id="L47">                        step.getIntermediateResult(),</span>
+<span class="fc" id="L48">                        step.getCarry()))</span>
+<span class="fc" id="L49">                .toList();</span>
+
+<span class="fc" id="L51">        CalculationApiResponse response = new CalculationApiResponse(result.sum(), steps);</span>
+<span class="fc" id="L52">        return ResponseEntity.ok(response);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

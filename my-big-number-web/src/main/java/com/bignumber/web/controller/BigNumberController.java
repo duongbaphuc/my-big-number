@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class BigNumberController {
@@ -18,6 +19,12 @@ public class BigNumberController {
 
     public BigNumberController(MyBigNumber myBigNumber) {
         this.myBigNumber = myBigNumber;
+    }
+
+    @GetMapping("favicon.ico")
+    @ResponseBody
+    public void favicon() {
+        // Trả về 200 OK rỗng để trình duyệt không gọi thiếu file và không gây NoResourceFoundException
     }
 
     @GetMapping("/")
