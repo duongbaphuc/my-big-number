@@ -79,7 +79,7 @@ Gọi $N = \max(\text{length}(stn1), \text{length}(stn2))$:
 
 | Phương thức | Độ phức tạp thời gian (Time) | Độ phức tạp không gian (Space) |
 | :--- | :---: | :---: |
-| **`sum(...)`** (Fast Path) | $\mathcal{O}(N)$ | $\mathcal{O}(1)$ bộ nhớ phụ (chỉ cấp phát 1 mảng kết quả $\mathcal{O}(N)$) |
+| **`sum(...)`** (Fast Path) | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ do cấp phát buffer kết quả |
 | **`sumWithProgress(...)`** | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ (lưu trữ $N$ đối tượng `CalculationStep`) |
 
 ---
@@ -114,6 +114,8 @@ Gọi $N = \max(\text{length}(stn1), \text{length}(stn2))$:
 ---
 
 ## 6. Kết quả đo đạc thực tế (Benchmark)
+
+Các số liệu dưới đây là số liệu tham khảo của một lần đo, không phải SLA. Cần ghi nhận hardware, JVM flags, warm-up, số lần lặp và source revision trước khi dùng cho quyết định production.
 
 Thực hiện trên máy phát triển với Java 17:
 

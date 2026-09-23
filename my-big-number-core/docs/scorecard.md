@@ -1,15 +1,16 @@
-# Bảng Đánh Giá Tuân Thủ Quy Tắc (Scorecard Check)
-**Dự án:** `my-big-number-core` | **Mô đun:** Context Engineering (Lab 2.1)  
-**Mục tiêu kiểm chứng:** Đánh giá mã nguồn nháp [`scratch/ScratchHandler.java`](../scratch/ScratchHandler.java) sinh ra bởi AI/Copilot dựa trên bộ quy tắc nền tảng (**Rules Pack**).
+# MyBigNumber API Compliance Scorecard
+
+**Dự án:** `MyBigNumber`
+**Mục tiêu:** Đánh giá source code REST API sinh bởi AI/Copilot theo project-level API contract.
 
 ---
 
 ## 1. Ngữ cảnh & Ràng buộc Prompt (Context Prompt)
 ```text
 Role: Senior Engineer.
-Task: Write a POST /api/workorders handler in Java.
-Context files: docs/coding-rules.md, docs/api-rules.md, docs/security-rules.md.
-Constraints: Do not invent extra JSON fields not specified in requirements, use standard validation, return 400 on error. Match repo style.
+Task: Implement `POST /api/calculations` for MyBigNumber.
+Context files: `C:\my-big-number\docs\api-requirements.md`, `C:\my-big-number\docs\api-spec.md`, `C:\my-big-number\docs\api-test-matrix.md`, `C:\my-big-number\docs\api-design.md`.
+Constraints: Do not invent JSON fields, preserve the Thymeleaf routes, use the core public API, return Problem Details on error, and run the specified Maven tests.
 ```
 
 ---
@@ -18,30 +19,27 @@ Constraints: Do not invent extra JSON fields not specified in requirements, use 
 
 | STT | Tiêu chí đánh giá (Criteria) | Quy tắc đối chiếu | Kỳ vọng (Expectation) | Thực tế đạt được (Actual Code) | Trạng thái | Điểm |
 | :---: | :--- | :--- | :--- | :--- | :---: | :---: |
-| **1** | **REST Resource Naming** | `api-rules.md` (Rule 1) | Endpoint dùng danh từ số nhiều `/api/workorders`. | Handler định nghĩa đúng endpoint xử lý `/api/workorders`. | **PASS** | 10/10 |
-| **2** | **HTTP Verb & Status Code** | `api-rules.md` (Rule 2) | Dùng `POST`, trả về 201 khi thành công, 400 khi lỗi đầu vào. | Trả về `WorkOrderResponse` (201) và `ProblemDetails` (400 Bad Request). | **PASS** | 10/10 |
-| **3** | **Strict Schema Conformance** | `api-rules.md` (Rule 3) | **KHÔNG** tự ý sinh thêm trường dữ liệu ngoài đặc tả. | `CreateWorkOrderRequest` chỉ có đúng 3 trường: `title`, `description`, `priority`. Không có trường thừa (như `metadata`, `tags`). | **PASS** | 10/10 |
-| **4** | **Chuẩn lỗi RFC 7807** | `api-rules.md` (Rule 4) | Phản hồi lỗi theo chuẩn Problem Details (`type`, `title`, `status`, `detail`, `instance`). | Class `ProblemDetails` định nghĩa đầy đủ 5 trường chuẩn RFC 7807. | **PASS** | 10/10 |
-| **5** | **Xác thực dữ liệu đầu vào** | `api-rules.md` (Rule 5) | Xác thực các trường không được null hoặc blank, áp dụng Fail-Fast. | Kiểm tra `title`, `description`, `priority` không được rỗng ngay trong compact constructor của Record. | **PASS** | 10/10 |
-| **6** | **Dependency Injection** | `coding-rules.md` (Rule 4) | Bắt buộc dùng Constructor Injection, cấm Field Injection `@Autowired`. | `ScratchHandler` và `WorkOrderService` đều dùng Constructor Injection cho các trường `final`. | **PASS** | 10/10 |
-| **7** | **Variable Scope in Loops** | `coding-rules.md` (Rule 3) | Không khai báo biến bên trong vòng lặp. | Toàn bộ mã nguồn tuân thủ quản lý phạm vi biến chặt chẽ, không có khai báo biến thừa trong loop. | **PASS** | 10/10 |
-| **8** | **Xử lý ngoại lệ chuẩn** | `coding-rules.md` (Rule 5) | Không ném `RuntimeException` chung chung, bắt lỗi cụ thể `IllegalArgumentException`. | Bắt riêng `IllegalArgumentException` trả về HTTP 400 rõ ràng. | **PASS** | 10/10 |
-| **9** | **Logging không lộ PII** | `coding-rules.md` (Rule 6) | Dùng SLF4J, không log mật khẩu hay thông tin cá nhân PII. | Dùng `LoggerFactory.getLogger(...)`, chỉ log `priority`, `id`, không log thông tin nhạy cảm. | **PASS** | 10/10 |
-| **10** | **Không Hardcode Secrets** | `security-rules.md` (Rule 1) | Tuyệt đối không hardcode mật khẩu, token hay API key. | Không có secret, credential hay token nào bị nhúng trong mã nguồn. | **PASS** | 10/10 |
-| **11** | **Chống rò rỉ Stacktrace** | `security-rules.md` (Rule 5) | Lỗi hệ thống 500 không được trả stacktrace thô ra ngoài. | Khối catch `Exception` ghi log `error` nội bộ và trả về thông báo chung `Internal Server Error` an toàn. | **PASS** | 10/10 |
-| **12** | **Tính Bất biến (Immutability)** | `coding-rules.md` (Rule 9) | Ưu tiên dùng Java `record` và trường `final`. | Dùng Java `record` cho `CreateWorkOrderRequest`, `WorkOrderResponse`, `ProblemDetails`. | **PASS** | 10/10 |
+| **1** | **REST Endpoint** | `api-spec.md` | Endpoint là `POST /api/calculations`. | Chưa có implementation | **PENDING** | 0/10 |
+| **2** | **HTTP Verb & Status Code** | `api-spec.md` | Trả `200` khi thành công, `400` khi input lỗi. | Chưa có implementation | **PENDING** | 0/10 |
+| **3** | **Strict Schema Conformance** | `api-spec.md` | Chỉ dùng `num1`, `num2`, `includeSteps`, `sum`, `steps`. | Chưa có implementation | **PENDING** | 0/10 |
+| **4** | **Chuẩn lỗi RFC 7807** | `api-rules.md` (Rule 7) | Phản hồi lỗi có `type`, `title`, `status`, `detail`, `code`. | Chưa có implementation | **PENDING** | 0/10 |
+| **5** | **Xác thực dữ liệu đầu vào** | `api-requirements.md` | Validate numeric strings, length, null option, and unknown fields. | Chưa có implementation | **PENDING** | 0/10 |
+| **6** | **Core reuse and injection** | `api-design.md` | Use constructor injection and the public `MyBigNumber` API. | Chưa có implementation | **PENDING** | 0/10 |
+| **7** | **Architecture boundaries** | `api-design.md` | Controller không sao chép thuật toán hoặc render template. | Chưa có implementation | **PENDING** | 0/10 |
+| **8** | **Xử lý ngoại lệ chuẩn** | `coding-rules.md` | Map lỗi cụ thể theo error matrix. | Chưa có implementation | **PENDING** | 0/10 |
+| **9** | **Logging không lộ dữ liệu** | `security-rules.md` | Không log full numeric inputs hoặc stack trace. | Chưa có implementation | **PENDING** | 0/10 |
+| **10** | **Không Hardcode Secrets** | `security-rules.md` (Rule 1) | Không hardcode mật khẩu, token hay API key. | Chưa có executable verification | **PENDING** | 0/10 |
+| **11** | **Chống rò rỉ Stacktrace** | `security-rules.md` (Rule 5) | Lỗi HTTP 500 không trả stacktrace hoặc exception nội bộ. | Chưa có implementation | **PENDING** | 0/10 |
+| **12** | **Contract tests** | `api-test-matrix.md` | Mỗi case trong test matrix có executable test. | Chưa có implementation | **PENDING** | 0/10 |
 
 ---
 
 ## 3. Tổng kết Đánh giá (Final Summary)
 
 * **Tổng số tiêu chí kiểm tra:** 12 tiêu chí
-* **Số tiêu chí đạt (Pass):** 12 / 12
+* **Số tiêu chí đạt (Pass):** 0 / 12 before implementation
 * **Số tiêu chí vi phạm (Fail):** 0 / 12
-* **Tổng điểm đạt được:** **120 / 120 (100% PASS)**
+* **Tổng điểm đạt được:** **Pending implementation and executable verification**
 
 ### Nhận xét & Kết luận:
-Nhờ việc thiết lập bộ quy tắc ngữ cảnh chặt chẽ (**Context Engineering / Rules Pack** bao gồm `coding-rules.md`, `api-rules.md` và `security-rules.md`), mã nguồn sinh ra bởi AI hoàn toàn:
-1. Tuân thủ 100% chuẩn REST và RFC 7807, không bị ảo giác (hallucination) sinh thêm các trường JSON lạ.
-2. Đảm bảo an toàn bảo mật, không để lộ PII hoặc stacktrace.
-3. Đáp ứng tiêu chuẩn kiến trúc hiện đại của Java 17+ (Constructor Injection, Record, Immutability).
+Không được đánh dấu `PASS` nếu chưa có source path, test path, executable command và output xác nhận. Scorecard này đánh giá implementation thực tế, không suy luận từ việc tài liệu tồn tại.

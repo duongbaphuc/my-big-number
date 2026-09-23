@@ -85,3 +85,12 @@ Bộ kiểm thử nằm tại `src/test/java/com/bignumber/core/MyBigNumberTest.
   ```bash
   mvn clean package
   ```
+
+## 7. Source and Test Mapping
+
+| Artifact | Absolute path | Responsibility | Verification |
+|---|---|---|---|
+| `MyBigNumber` | `C:\my-big-number\my-big-number-core\src\main\java\com\bignumber\core\MyBigNumber.java` | Add numbers as strings | `MyBigNumberTest` |
+| `CalculationResult` | `C:\my-big-number\my-big-number-core\src\main\java\com\bignumber\core\CalculationResult.java` | Return sum and steps | Core tests |
+| `CalculationStep` | `C:\my-big-number\my-big-number-core\src\main\java\com\bignumber\core\CalculationStep.java` | Represent one calculation step | Core tests |
+| Core tests | `C:\my-big-number\my-big-number-core\src\test\java\com\bignumber\core\MyBigNumberTest.java` | Verify valid and invalid input | `mvn test` |

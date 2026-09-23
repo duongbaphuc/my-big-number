@@ -68,3 +68,16 @@ Bạn có thể mở trực tiếp file HTML bằng bất kỳ trình duyệt we
 
 👉 **Đường dẫn file HTML:**
 [`coverage-report/html/index.html`](html/index.html)
+
+## 5. Reproducibility
+
+| Item | Value |
+|---|---|
+| Module | `my-big-number-core` |
+| Test command | `mvn clean test` |
+| Java version | `21`, as configured by the root POM |
+| Report generation command | Must be recorded with the JaCoCo plugin configuration used |
+| Source revision | Must be recorded as the Git commit SHA |
+| Report generated at | Must be recorded as an ISO-8601 timestamp |
+
+Coverage percentage does not prove complete business correctness. Each requirement must also map to at least one behavioral test in `C:\my-big-number\docs\api-test-matrix.md` or the core test suite.
