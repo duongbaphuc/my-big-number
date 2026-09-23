@@ -41,6 +41,22 @@
 3. **Bảng tiến trình từng bước (Step-by-step Progress Table):**
    * Hiển thị bảng mô phỏng chi tiết từng thao tác: Số thứ tự bước, mô tả phép tính (hai chữ số cộng lại, số nhớ được cộng thêm), kết quả tạm thời thu được, và giá trị biến nhớ chuyển sang hàng tiếp theo.
 
+## 4.1. REST API
+
+| Endpoint | Method | Request | Success response | Error response |
+|---|---|---|---|---|
+| `/api/calculations` | `POST` | JSON: `num1`, `num2`, `includeSteps` | `sum`, `steps` | RFC 7807 Problem Details |
+
+Contract chính thức nằm tại `C:\my-big-number\docs\api-spec.md`.
+
+### REST API target files
+
+- `C:\my-big-number\my-big-number-web\src\main\java\com\bignumber\web\controller\BigNumberRestController.java`
+- `C:\my-big-number\my-big-number-web\src\main\java\com\bignumber\web\dto\CalculationApiRequest.java`
+- `C:\my-big-number\my-big-number-web\src\main\java\com\bignumber\web\dto\CalculationApiResponse.java`
+- `C:\my-big-number\my-big-number-web\src\main\java\com\bignumber\web\exception\ApiExceptionHandler.java`
+- `C:\my-big-number\my-big-number-web\src\test\java\com\bignumber\web\controller\BigNumberRestControllerTest.java`
+
 ---
 
 ## 5. Cách khởi chạy và truy cập

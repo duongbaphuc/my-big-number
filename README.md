@@ -28,7 +28,12 @@ Dự án được phân rã thành hai nhiệm vụ chính:
 big-number-workspace/
 ├── pom.xml                                  # Root POM: quản lý phiên bản, plugin và dependency chung
 ├── README.md                                # Tài liệu tổng quan toàn dự án (file này)
-├── request.md                               # Hồ sơ đặc tả yêu cầu chi tiết của Task 1 và Task 2
+├── docs/                                    # Đặc tả và thiết kế cấp workspace cho REST API
+│   ├── README.md                            # Mục lục tài liệu và thứ tự sử dụng
+│   ├── api-requirements.md                  # Yêu cầu nghiệp vụ và tiêu chí chấp nhận
+│   ├── api-spec.md                          # Contract REST API và schema JSON
+│   ├── api-test-matrix.md                   # Ma trận kiểm thử API
+│   └── api-design.md                        # Thiết kế triển khai và giới hạn thay đổi
 ├── .gitignore                               # Cấu hình loại trừ file rác, target, .idea
 │
 ├── my-big-number-core/                      # Sub-module Task 1: Thư viện tính toán lõi

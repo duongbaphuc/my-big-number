@@ -10,7 +10,7 @@ Thư viện Java lõi cài đặt thuật toán cộng hai số nguyên lớn d�
 | :--- | :--- |
 | 📖 [**API Reference (Đặc tả API)**](API_REFERENCE.md) | Hướng dẫn chi tiết cách gọi hàm, kiểu dữ liệu trả về, quy định ngoại lệ và code mẫu tích hợp. |
 | ⚡ [**Thuật toán & Hiệu năng**](ALGORITHM_AND_PERFORMANCE.md) | Phân tích chi tiết giải thuật cộng cột dọc, sơ đồ luồng, phân tích độ phức tạp $O(N)$ và các kỹ thuật tối ưu hóa bộ nhớ. |
-| 📐 [**Coding Rules (Quy chuẩn Lập trình)**](coding-rules.md) | Các quy định về Java 17+, quy ước đặt tên, Constructor Injection, cấm khai báo biến trong loop, logging không PII. |
+| 📐 [**Coding Rules (Quy chuẩn Lập trình)**](coding-rules.md) | Các quy định về Java 21, quy ước đặt tên, Constructor Injection và logging không lộ dữ liệu. |
 | 🌐 [**API Rules (Thiết kế REST & Error Handling)**](api-rules.md) | Quy định định danh REST resource, cấm bịa trường JSON ngoài đặc tả, chuẩn lỗi Problem Details (RFC 7807). |
 | 🛡️ [**Security Rules (Quy tắc Bảo mật)**](security-rules.md) | Chống hardcode secret, xác thực đầu vào, phòng chống SQL Injection, RBAC và bảo vệ thông tin hệ thống. |
 | 📊 [**Scorecard Check (Chấm điểm tuân thủ)**](scorecard.md) | Bảng chấm điểm 12 tiêu chí đánh giá mã nguồn nháp do AI sinh ra dựa trên bộ Rules Pack (Đạt 100% Pass). |

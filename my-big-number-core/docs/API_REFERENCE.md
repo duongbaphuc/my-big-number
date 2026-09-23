@@ -123,29 +123,33 @@ Cả hai phương thức `sum` và `sumWithProgress` đều áp dụng chung m�
 
 ---
 
-## 6. Code mẫu tích hợp (Integration Examples)
+## 6. REST Integration Boundary
 
-### Ví dụ 1: Tích hợp trong Spring Boot REST Controller (Task 2 API)
+REST API không được định nghĩa trong core module. Core module chỉ cung cấp các public API ở trên.
+
+REST contract chính thức nằm tại:
+
+- `C:\my-big-number\docs\api-requirements.md`
+- `C:\my-big-number\docs\api-spec.md`
+- `C:\my-big-number\docs\api-design.md`
+
+REST module phải dùng `POST /api/calculations` với JSON body. Không dùng các endpoint cũ dạng `GET /api/big-number/calculate`, query parameters hoặc raw `Map` error response.
+
+## 7. Code mẫu tích hợp Core
+
+### Ví dụ 1: Tích hợp trong application service
 ```java
-@RestController
-@RequestMapping("/api/big-number")
-public class BigNumberController {
+public class CalculationApplicationService {
 
-    private final MyBigNumber myBigNumber = new MyBigNumber();
+  private final MyBigNumber myBigNumber;
 
-    @GetMapping("/calculate")
-    public ResponseEntity<?> calculate(
-            @RequestParam String num1,
-            @RequestParam String num2) {
-        try {
-            CalculationResult result = myBigNumber.sumWithProgress(num1, num2);
-            return ResponseEntity.ok(result);
-        } catch (IllegalArgumentException ex) {
-            return ResponseEntity.badRequest().body(Map.of("error", ex.getMessage()));
-        }
+  public CalculationApplicationService(MyBigNumber myBigNumber) {
+    this.myBigNumber = myBigNumber;
     }
 }
 ```
+
+HTTP endpoint, validation and Problem Details are implemented in the web module according to the project-level API specification.
 
 ### Ví dụ 2: Lựa chọn hàm tối ưu theo ngữ cảnh
 ```java
