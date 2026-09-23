@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MyBigNumber.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">My Big Number Core (Task 1)</a> &gt; <a href="index.source.html" class="el_package">com.bignumber.core</a> &gt; <span class="el_source">MyBigNumber.java</span></div><h1>MyBigNumber.java</h1><pre class="source lang-java linenums">package com.bignumber.core;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ * Lớp cài đặt thuật toán cộng hai số lớn dưới dạng chuỗi
+ * mô phỏng cách tính toán của học sinh tiểu học.
+ */
+<span class="fc" id="L12">public class MyBigNumber {</span>
+
+<span class="fc" id="L14">    private static final Logger LOGGER = Logger.getLogger(MyBigNumber.class.getName());</span>
+
+    /**
+     * Phương thức phục vụ Task 1: Trả về chuỗi kết quả phép cộng.
+     * Tối ưu luồng tính toán trực tiếp (Fast Path) đạt độ phức tạp O(N) thời gian
+     * và O(1) bộ nhớ phụ (chỉ cấp phát duy nhất 1 mảng char kết quả).
+     *
+     * @param stn1 Chuỗi số thứ nhất
+     * @param stn2 Chuỗi số thứ hai
+     * @return Chuỗi kết quả phép cộng
+     * @throws IllegalArgumentException nếu chuỗi là null, rỗng hoặc chứa ký tự không hợp lệ
+     */
+    public String sum(String stn1, String stn2) {
+<span class="fc" id="L27">        validateInputs(stn1, stn2);</span>
+
+<span class="fc" id="L29">        int len1 = stn1.length();</span>
+<span class="fc" id="L30">        int len2 = stn2.length();</span>
+<span class="fc" id="L31">        int maxLen = Math.max(len1, len2);</span>
+
+<span class="fc" id="L33">        char[] resultChars = new char[maxLen + 1];</span>
+<span class="fc" id="L34">        int pos = resultChars.length - 1;</span>
+<span class="fc" id="L35">        int carry = 0;</span>
+
+        int i;
+        int index1;
+        int index2;
+        int digit1;
+        int digit2;
+        char c1;
+        char c2;
+        int total;
+
+<span class="fc bfc" id="L46" title="All 2 branches covered.">        for (i = 0; i &lt; maxLen; i++) {</span>
+<span class="fc" id="L47">            index1 = len1 - 1 - i;</span>
+<span class="fc" id="L48">            index2 = len2 - 1 - i;</span>
+
+<span class="fc" id="L50">            digit1 = 0;</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">            if (index1 &gt;= 0) {</span>
+<span class="fc" id="L52">                c1 = stn1.charAt(index1);</span>
+<span class="fc bfc" id="L53" title="All 4 branches covered.">                if (c1 &lt; '0' || c1 &gt; '9') {</span>
+<span class="fc" id="L54">                    LOGGER.severe(&quot;LỖI: Chuỗi 1 chứa ký tự không hợp lệ '&quot; + c1 + &quot;' tại vị trí &quot; + index1 + &quot;.&quot;);</span>
+<span class="fc" id="L55">                    throw new IllegalArgumentException(String.format(&quot;Chuỗi 1 chứa ký tự không hợp lệ '%c' tại vị trí %d.&quot;, c1, index1));</span>
+                }
+<span class="fc" id="L57">                digit1 = c1 - '0';</span>
+            }
+
+<span class="fc" id="L60">            digit2 = 0;</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">            if (index2 &gt;= 0) {</span>
+<span class="fc" id="L62">                c2 = stn2.charAt(index2);</span>
+<span class="fc bfc" id="L63" title="All 4 branches covered.">                if (c2 &lt; '0' || c2 &gt; '9') {</span>
+<span class="fc" id="L64">                    LOGGER.severe(&quot;LỖI: Chuỗi 2 chứa ký tự không hợp lệ '&quot; + c2 + &quot;' tại vị trí &quot; + index2 + &quot;.&quot;);</span>
+<span class="fc" id="L65">                    throw new IllegalArgumentException(String.format(&quot;Chuỗi 2 chứa ký tự không hợp lệ '%c' tại vị trí %d.&quot;, c2, index2));</span>
+                }
+<span class="fc" id="L67">                digit2 = c2 - '0';</span>
+            }
+
+<span class="fc" id="L70">            total = digit1 + digit2 + carry;</span>
+<span class="fc" id="L71">            resultChars[pos--] = (char) ('0' + (total % 10));</span>
+<span class="fc" id="L72">            carry = total / 10;</span>
+        }
+
+<span class="fc bfc" id="L75" title="All 2 branches covered.">        if (carry &gt; 0) {</span>
+<span class="fc" id="L76">            resultChars[pos--] = (char) ('0' + carry);</span>
+        }
+
+<span class="fc" id="L79">        return new String(resultChars, pos + 1, resultChars.length - 1 - pos);</span>
+    }
+
+    /**
+     * Phương thức phục vụ Task 2: Trả về kết quả và danh sách chi tiết các bước tính toán.
+     * Sử dụng mảng char[] điền từ phải sang trái O(1) thay vì StringBuilder.insert(0) O(N^2),
+     * pre-allocate dung lượng cho List, tái sử dụng StringBuilder mô tả và kiểm tra isLoggable.
+     *
+     * @param stn1 Chuỗi số thứ nhất
+     * @param stn2 Chuỗi số thứ hai
+     * @return Đối tượng CalculationResult chứa kết quả và danh sách các bước
+     * @throws IllegalArgumentException nếu chuỗi là null, rỗng hoặc chứa ký tự không hợp lệ
+     */
+    public CalculationResult sumWithProgress(String stn1, String stn2) {
+<span class="fc" id="L93">        validateInputs(stn1, stn2);</span>
+
+<span class="fc" id="L95">        int len1 = stn1.length();</span>
+<span class="fc" id="L96">        int len2 = stn2.length();</span>
+<span class="fc" id="L97">        int maxLen = Math.max(len1, len2);</span>
+
+        // Pre-allocate kích thước danh sách bước tính để tránh resizing mảng
+<span class="fc" id="L100">        List&lt;CalculationStep&gt; steps = new ArrayList&lt;&gt;(maxLen + 1);</span>
+
+        // Buffer chứa kết quả cộng từ phải sang trái để đạt O(1) thay vì insert(0) tốn O(N^2)
+<span class="fc" id="L103">        char[] buffer = new char[maxLen + 1];</span>
+<span class="fc" id="L104">        int pos = buffer.length - 1;</span>
+
+<span class="fc" id="L106">        int carry = 0;</span>
+<span class="fc" id="L107">        int step = 1;</span>
+
+        int i;
+        int index1;
+        int index2;
+        int digit1;
+        int digit2;
+        char c1;
+        char c2;
+        int sumDigits;
+        int total;
+        int currentDigit;
+        int nextCarry;
+<span class="fc" id="L120">        StringBuilder desc = new StringBuilder(128);</span>
+
+<span class="fc bfc" id="L122" title="All 2 branches covered.">        if (LOGGER.isLoggable(Level.INFO)) {</span>
+<span class="fc" id="L123">            LOGGER.log(Level.INFO, &quot;Bắt đầu phép tính cộng: {0} + {1}&quot;, new Object[]{stn1, stn2});</span>
+        }
+
+<span class="fc bfc" id="L126" title="All 2 branches covered.">        for (i = 0; i &lt; maxLen; i++) {</span>
+<span class="fc" id="L127">            index1 = len1 - 1 - i;</span>
+<span class="fc" id="L128">            index2 = len2 - 1 - i;</span>
+
+<span class="fc" id="L130">            digit1 = 0;</span>
+<span class="fc bfc" id="L131" title="All 2 branches covered.">            if (index1 &gt;= 0) {</span>
+<span class="fc" id="L132">                c1 = stn1.charAt(index1);</span>
+<span class="fc bfc" id="L133" title="All 4 branches covered.">                if (c1 &lt; '0' || c1 &gt; '9') {</span>
+<span class="fc" id="L134">                    LOGGER.severe(&quot;LỖI: Chuỗi 1 chứa ký tự không hợp lệ '&quot; + c1 + &quot;' tại vị trí &quot; + index1 + &quot;.&quot;);</span>
+<span class="fc" id="L135">                    throw new IllegalArgumentException(String.format(&quot;Chuỗi 1 chứa ký tự không hợp lệ '%c' tại vị trí %d.&quot;, c1, index1));</span>
+                }
+<span class="fc" id="L137">                digit1 = c1 - '0';</span>
+            }
+
+<span class="fc" id="L140">            digit2 = 0;</span>
+<span class="fc bfc" id="L141" title="All 2 branches covered.">            if (index2 &gt;= 0) {</span>
+<span class="fc" id="L142">                c2 = stn2.charAt(index2);</span>
+<span class="fc bfc" id="L143" title="All 4 branches covered.">                if (c2 &lt; '0' || c2 &gt; '9') {</span>
+<span class="fc" id="L144">                    LOGGER.severe(&quot;LỖI: Chuỗi 2 chứa ký tự không hợp lệ '&quot; + c2 + &quot;' tại vị trí &quot; + index2 + &quot;.&quot;);</span>
+<span class="fc" id="L145">                    throw new IllegalArgumentException(String.format(&quot;Chuỗi 2 chứa ký tự không hợp lệ '%c' tại vị trí %d.&quot;, c2, index2));</span>
+                }
+<span class="fc" id="L147">                digit2 = c2 - '0';</span>
+            }
+
+<span class="fc" id="L150">            sumDigits = digit1 + digit2;</span>
+<span class="fc" id="L151">            total = sumDigits + carry;</span>
+<span class="fc" id="L152">            currentDigit = total % 10;</span>
+<span class="fc" id="L153">            nextCarry = total / 10;</span>
+
+            // Điền trực tiếp vào buffer O(1)
+<span class="fc" id="L156">            buffer[pos--] = (char) ('0' + currentDigit);</span>
+<span class="fc" id="L157">            String intermediateResult = new String(buffer, pos + 1, buffer.length - 1 - pos);</span>
+
+<span class="fc" id="L159">            desc.setLength(0);</span>
+<span class="fc" id="L160">            desc.append(&quot;Lấy &quot;).append(digit1).append(&quot; cộng với &quot;).append(digit2).append(&quot; được &quot;).append(sumDigits).append(&quot;.&quot;);</span>
+<span class="fc bfc" id="L161" title="All 2 branches covered.">            if (carry &gt; 0) {</span>
+<span class="fc" id="L162">                desc.append(&quot; Cộng tiếp với nhớ &quot;).append(carry).append(&quot; được &quot;).append(total).append(&quot;.&quot;);</span>
+            }
+<span class="fc" id="L164">            desc.append(&quot; Lưu &quot;).append(currentDigit).append(&quot; vào kết quả tạm \&quot;&quot;).append(intermediateResult).append(&quot;\&quot;.&quot;);</span>
+<span class="fc bfc" id="L165" title="All 2 branches covered.">            if (nextCarry &gt; 0) {</span>
+<span class="fc" id="L166">                desc.append(&quot; Ghi nhớ &quot;).append(nextCarry).append(&quot;.&quot;);</span>
+            } else {
+<span class="fc" id="L168">                desc.append(&quot; Ghi nhớ 0.&quot;);</span>
+            }
+
+<span class="fc bfc" id="L171" title="All 2 branches covered.">            if (LOGGER.isLoggable(Level.INFO)) {</span>
+<span class="fc" id="L172">                LOGGER.info(&quot;Bước &quot; + step + &quot;: &quot; + desc);</span>
+            }
+
+<span class="fc" id="L175">            steps.add(new CalculationStep(step, desc.toString(), intermediateResult, nextCarry));</span>
+
+<span class="fc" id="L177">            carry = nextCarry;</span>
+<span class="fc" id="L178">            step++;</span>
+        }
+
+<span class="fc bfc" id="L181" title="All 2 branches covered.">        if (carry &gt; 0) {</span>
+<span class="fc" id="L182">            buffer[pos--] = (char) ('0' + carry);</span>
+<span class="fc" id="L183">            String finalResult = new String(buffer, pos + 1, buffer.length - 1 - pos);</span>
+
+<span class="fc" id="L185">            desc.setLength(0);</span>
+<span class="fc" id="L186">            desc.append(&quot;Hạ số nhớ &quot;).append(carry).append(&quot; vào đầu kết quả thu được: \&quot;&quot;).append(finalResult).append(&quot;\&quot;.&quot;);</span>
+<span class="fc bfc" id="L187" title="All 2 branches covered.">            if (LOGGER.isLoggable(Level.INFO)) {</span>
+<span class="fc" id="L188">                LOGGER.info(&quot;Bước cuối: &quot; + desc);</span>
+            }
+<span class="fc" id="L190">            steps.add(new CalculationStep(step, desc.toString(), finalResult, 0));</span>
+        }
+
+<span class="fc" id="L193">        String finalSum = new String(buffer, pos + 1, buffer.length - 1 - pos);</span>
+<span class="fc bfc" id="L194" title="All 2 branches covered.">        if (LOGGER.isLoggable(Level.INFO)) {</span>
+<span class="fc" id="L195">            LOGGER.log(Level.INFO, &quot;Kết quả cuối cùng: {0}&quot;, finalSum);</span>
+        }
+
+<span class="fc" id="L198">        return new CalculationResult(finalSum, steps);</span>
+    }
+
+    /**
+     * Phương thức kiểm tra tham số đầu vào chung.
+     */
+    private void validateInputs(String stn1, String stn2) {
+<span class="fc bfc" id="L205" title="All 4 branches covered.">        if (stn1 == null || stn2 == null) {</span>
+<span class="fc" id="L206">            String errorMsg = &quot;Tham số truyền vào không được là null.&quot;;</span>
+<span class="fc" id="L207">            LOGGER.severe(&quot;LỖI: &quot; + errorMsg);</span>
+<span class="fc" id="L208">            throw new IllegalArgumentException(errorMsg);</span>
+        }
+<span class="fc bfc" id="L210" title="All 4 branches covered.">        if (stn1.isEmpty() || stn2.isEmpty()) {</span>
+<span class="fc" id="L211">            String errorMsg = &quot;Chuỗi số không được để trống.&quot;;</span>
+<span class="fc" id="L212">            LOGGER.severe(&quot;LỖI: &quot; + errorMsg);</span>
+<span class="fc" id="L213">            throw new IllegalArgumentException(errorMsg);</span>
+        }
+<span class="fc" id="L215">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

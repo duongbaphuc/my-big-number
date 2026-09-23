@@ -1,0 +1,4 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+My Big Number Core (Task 1),com.bignumber.core,CalculationResult,0,9,0,0,0,1,0,1,0,1
+My Big Number Core (Task 1),com.bignumber.core,CalculationStep,0,106,0,14,0,18,0,15,0,8
+My Big Number Core (Task 1),com.bignumber.core,MyBigNumber,0,579,0,52,0,101,0,31,0,5

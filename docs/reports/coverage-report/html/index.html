@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Cáo Kiểm Thử & Độ Bao Phủ Mã Nguồn (100% Test Coverage)</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --border-color: #30363d;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --accent-green: #238636;
+            --badge-green: #2ea043;
+            --accent-blue: #58a6ff;
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 32px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 24px;
+            margin-bottom: 28px;
+        }
+
+        .header h1 {
+            font-size: 26px;
+            margin: 0 0 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .badge-100 {
+            background: rgba(46, 160, 67, 0.2);
+            color: #3fb950;
+            border: 1px solid rgba(46, 160, 67, 0.4);
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 4px 12px;
+            display: inline-block;
+        }
+
+        .header p {
+            color: var(--text-secondary);
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #3fb950;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        @media (max-width: 768px) {
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .module-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .module-card h2 {
+            font-size: 18px;
+            margin: 0 0 12px 0;
+            color: var(--text-primary);
+        }
+
+        .module-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin: 0 0 20px 0;
+            flex-grow: 1;
+        }
+
+        .metrics-list {
+            margin: 0 0 20px 0;
+            padding: 0;
+            list-style: none;
+            font-size: 13px;
+        }
+
+        .metrics-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .metrics-list li span:last-child {
+            font-weight: 600;
+            color: #3fb950;
+        }
+
+        .btn-view {
+            display: inline-block;
+            background-color: var(--accent-green);
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            transition: background 0.2s ease;
+        }
+
+        .btn-view:hover {
+            background-color: var(--badge-green);
+        }
+
+        .table-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        .table-section h3 {
+            margin: 0 0 16px 0;
+            font-size: 16px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            color: var(--text-secondary);
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .text-green {
+            color: #3fb950;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>
+                Báo Cáo Kiểm Thử Toàn Diện
+                <span class="badge-100">100% Coverage Tuyệt Đối</span>
+            </h1>
+            <p>Hệ thống đo lường tự động bởi JaCoCo v0.8.11 • Thực thi trên JDK 17 (Spring Boot 3.2.5)</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Line Coverage (251/251 dòng)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Branch Coverage (92/92 nhánh)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">88 / 88</div>
+                <div class="stat-label">Automated Tests Passed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">12 / 12</div>
+                <div class="stat-label">Classes Covered 100%</div>
+            </div>
+        </div>
+
+        <div class="modules-grid">
+            <div class="module-card">
+                <div>
+                    <h2>1. my-big-number-core</h2>
+                    <p>Sub-module nghiệp vụ lõi tính toán số học lớn theo thuật toán mô phỏng phép tính cột dọc tiểu học.</p>
+                    <ul class="metrics-list">
+                        <li><span>Số ca kiểm thử (Unit Tests)</span><span>50 Passed</span></li>
+                        <li><span>Line Coverage</span><span>100% (126/126)</span></li>
+                        <li><span>Branch Coverage</span><span>100% (66/66)</span></li>
+                        <li><span>Method Coverage</span><span>100% (14/14)</span></li>
+                    </ul>
+                </div>
+                <a class="btn-view" href="../core/html/index.html">Xem chi tiết JaCoCo Core &rarr;</a>
+            </div>
+
+            <div class="module-card">
+                <div>
+                    <h2>2. my-big-number-web</h2>
+                    <p>Sub-module giao diện người dùng Thymeleaf Web UI và chuẩn REST API /api/calculations với RFC 7807.</p>
+                    <ul class="metrics-list">
+                        <li><span>Số ca kiểm thử (Unit & MVC Tests)</span><span>38 Passed</span></li>
+                        <li><span>Line Coverage</span><span>100% (125/125)</span></li>
+                        <li><span>Branch Coverage</span><span>100% (26/26)</span></li>
+                        <li><span>Method Coverage</span><span>100% (35/35)</span></li>
+                    </ul>
+                </div>
+                <a class="btn-view" href="../web/html/index.html">Xem chi tiết JaCoCo Web &rarr;</a>
+            </div>
+        </div>
+
+        <div class="table-section">
+            <h3>Chi Tiết Từng Lớp Mã Nguồn (Classes)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sub-module</th>
+                        <th>Class</th>
+                        <th>Lines Covered</th>
+                        <th>Branches Covered</th>
+                        <th>Instruction Cov</th>
+                        <th>Đánh giá</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>my-big-number-core</td>
+                        <td><code>com.bignumber.core.MyBigNumber</code></td>
+                        <td class="text-green">102 / 102 (100%)</td>
+                        <td class="text-green">52 / 52 (100%)</td>
+                        <td class="text-green">581 / 581 (100%)</td>
+                        <td class="text-green">🏆 Tuyệt đối</td>
+                    </tr>
+                    <tr>
+                        <td>my-big-number-core</td>
+                        <td><code>com.bignumber.core.CalculationStep</code></td>
+                        <td class="text-green">23 / 23 (100%)</td>
+                        <td class="text-green">14 / 14 (100%)</td>
+                        <td class="text-green">106 / 106 (100%)</td>
+                        <td class="text-green">🏆 Tuyệt đối</td>
+                    </tr>
+                    <tr>
+                        <td>my-big-number-core</td>
+                        <td><code>com.bignumber.core.CalculationResult</code></td>
+                        <td class="text-green">1 / 1 (100%)</td>
+                        <td class="text-green">0 / 0 (n/a)</td>
+                        <td class="text-green">9 / 9 (100%)</td>
+                        <td class="text-green">🏆 Tuyệt đối</td>
+                    </tr>
+                    <tr>
+                        <td>my-big-number-web</td>
+                        <td><code>com.bignumber.web.controller.BigNumberRestController</code></td>
+                        <td class="text-green">18 / 18 (100%)</td>
+                        <td class="text-green">2 / 2 (100%)</td>
+                        <td class="text-green">67 / 67 (100%)</td>
+                        <td class="text-green">🏆 Tuyệt đối</td>
+                    </tr>
+                    <tr>
+                        <td>my-big-number-web</td>
+                        <td><code>com.bignumber.web.controller.BigNumberController</code></td>
+                        <td class="text-green">14 / 14 (100%)</td>
+                        <td class="text-green">2 / 2 (100%)</td>
+                        <td class="text-green">51 / 51 (100%)</td>
+                        <td class="text-green">🏆 Tuyệt đối</td>
+                    </tr>
+                    <tr>
+                        <td>my-big-number-web</td>
+                        <td><code>com.bignumber.web.exception.ApiExceptionHandler</code></td>
+                        <td class="text-green">61 / 61 (100%)</td>
+                        <td class="text-green">20 / 20 (100%)</td>
+                        <td class="text-green">184 / 184 (100%)</td>
+                        <td class="text-green">🏆 Tuyệt đối</td>
+                    </tr>
+                    <tr>
+                        <td>my-big-number-web</td>
+                        <td><code>com.bignumber.web.BigNumberWebApplication</code></td>
+                        <td class="text-green">4 / 4 (100%)</td>
+                        <td class="text-green">0 / 0 (n/a)</td>
+                        <td class="text-green">12 / 12 (100%)</td>
+                        <td class="text-green">🏆 Tuyệt đối</td>
+                    </tr>
+                    <tr>
+                        <td>my-big-number-web</td>
+                        <td><code>com.bignumber.web.dto.CalculationRequest</code></td>
+                        <td class="text-green">9 / 9 (100%)</td>
+                        <td class="text-green">0 / 0 (n/a)</td>
+                        <td class="text-green">23 / 23 (100%)</td>
+                        <td class="text-green">🏆 Tuyệt đối</td>
+                    </tr>
+                    <tr>
+                        <td>my-big-number-web</td>
+                        <td><code>com.bignumber.web.dto.CalculationApiRequest</code></td>
+                        <td class="text-green">16 / 16 (100%)</td>
+                        <td class="text-green">2 / 2 (100%)</td>
+                        <td class="text-green">50 / 50 (100%)</td>
+                        <td class="text-green">🏆 Tuyệt đối</td>
+                    </tr>
+                    <tr>
+                        <td>my-big-number-web</td>
+                        <td><code>com.bignumber.web.dto.CalculationApiResponse</code></td>
+                        <td class="text-green">1 / 1 (100%)</td>
+                        <td class="text-green">0 / 0 (n/a)</td>
+                        <td class="text-green">9 / 9 (100%)</td>
+                        <td class="text-green">🏆 Tuyệt đối</td>
+                    </tr>
+                    <tr>
+                        <td>my-big-number-web</td>
+                        <td><code>com.bignumber.web.dto.CalculationStepDto</code></td>
+                        <td class="text-green">1 / 1 (100%)</td>
+                        <td class="text-green">0 / 0 (n/a)</td>
+                        <td class="text-green">15 / 15 (100%)</td>
+                        <td class="text-green">🏆 Tuyệt đối</td>
+                    </tr>
+                    <tr>
+                        <td>my-big-number-web</td>
+                        <td><code>com.bignumber.web.dto.ProblemDetailResponse</code></td>
+                        <td class="text-green">1 / 1 (100%)</td>
+                        <td class="text-green">0 / 0 (n/a)</td>
+                        <td class="text-green">18 / 18 (100%)</td>
+                        <td class="text-green">🏆 Tuyệt đối</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

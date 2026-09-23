@@ -1,0 +1,13 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+My Big Number Core (Task 1),com.bignumber.core,CalculationResult,0,9,0,0,0,1,0,1,0,1
+My Big Number Core (Task 1),com.bignumber.core,CalculationStep,0,106,0,14,0,18,0,15,0,8
+My Big Number Core (Task 1),com.bignumber.core,MyBigNumber,0,579,0,52,0,101,0,31,0,5
+My Big Number Web (Task 2),com.bignumber.web.controller,BigNumberRestController,0,67,0,2,0,18,0,4,0,3
+My Big Number Web (Task 2),com.bignumber.web.controller,BigNumberController,0,51,0,2,0,15,0,5,0,4
+My Big Number Web (Task 2),com.bignumber.web.exception,ApiExceptionHandler,0,184,0,20,0,38,0,19,0,9
+My Big Number Web (Task 2),com.bignumber.web,BigNumberWebApplication,0,12,0,0,0,4,0,3,0,3
+My Big Number Web (Task 2),com.bignumber.web.dto,CalculationRequest,0,23,0,0,0,9,0,5,0,5
+My Big Number Web (Task 2),com.bignumber.web.dto,CalculationApiResponse,0,9,0,0,0,1,0,1,0,1
+My Big Number Web (Task 2),com.bignumber.web.dto,CalculationApiRequest,0,50,0,2,0,16,0,9,0,8
+My Big Number Web (Task 2),com.bignumber.web.dto,ProblemDetailResponse,0,18,0,0,0,1,0,1,0,1
+My Big Number Web (Task 2),com.bignumber.web.dto,CalculationStepDto,0,15,0,0,0,1,0,1,0,1

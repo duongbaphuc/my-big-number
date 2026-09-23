@@ -3,10 +3,13 @@
 Module thư viện lõi cài đặt giải thuật cộng hai số nguyên lớn dưới dạng chuỗi ký tự theo phương pháp mô phỏng cách tính đặt cột dọc của học sinh tiểu học. Module được đóng gói thành thư viện chuẩn (`.jar`), sẵn sàng bàn giao cho các nhóm khác tái sử dụng.
 
 > 📖 **Dành cho Lập trình viên:** Xem tài liệu kỹ thuật, quy chuẩn và báo cáo kiểm thử tại:
-> * [**API Reference (Đặc tả chi tiết các hàm, kiểu dữ liệu, ngoại lệ)**](docs/API_REFERENCE.md)
-> * [**Thuật toán & Phân tích tối ưu hiệu năng**](docs/ALGORITHM_AND_PERFORMANCE.md)
-> * [**Quy chuẩn Lập trình Dự án (Coding Rules)**](docs/coding-rules.md)
-> * [**Báo cáo độ bao phủ kiểm thử (Test Coverage: 100% Line Coverage)**](coverage-report/README.md)
+> * [**Yêu cầu & Bối cảnh Nghiệp vụ (Requirements)**](../docs/core/requirement.md)
+> * [**Giải thuật & Sơ đồ Kỹ thuật (Algorithm)**](../docs/core/algorithm.md)
+> * [**Quy chuẩn Lập trình (Coding Rules)**](../docs/core/coding-rules.md)
+> * [**Mô hình Đe dọa & Phòng vệ (Security Rules)**](../docs/core/security-rules.md)
+> * [**Core API Reference (Đặc tả chi tiết hàm, kiểu dữ liệu, ngoại lệ)**](../docs/core/core-api-reference.md)
+> * [**Báo cáo Benchmark Hiệu năng**](../docs/core/benchmark-and-performance.md)
+> * [**Báo cáo độ bao phủ kiểm thử (JaCoCo 100% Line Coverage)**](../docs/reports/coverage-report/README.md)
 
 ---
 

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ApiExceptionHandler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">My Big Number Web (Task 2)</a> &gt; <a href="index.source.html" class="el_package">com.bignumber.web.exception</a> &gt; <span class="el_source">ApiExceptionHandler.java</span></div><h1>ApiExceptionHandler.java</h1><pre class="source lang-java linenums">package com.bignumber.web.exception;
+
+import com.bignumber.web.dto.ProblemDetailResponse;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.FieldError;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+@RestControllerAdvice
+<span class="fc" id="L18">public class ApiExceptionHandler {</span>
+
+<span class="fc" id="L20">    private static final Logger LOGGER = Logger.getLogger(ApiExceptionHandler.class.getName());</span>
+    private static final String PROBLEM_BASE_URL = &quot;https://my-big-number.example/problems/invalid-request&quot;;
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity&lt;ProblemDetailResponse&gt; handleValidation(MethodArgumentNotValidException ex) {
+<span class="fc" id="L25">        FieldError error = ex.getBindingResult().getFieldErrors().stream()</span>
+<span class="fc bfc" id="L26" title="All 4 branches covered.">                .filter(fe -&gt; fe.getDefaultMessage() != null &amp;&amp; fe.getDefaultMessage().contains(&quot;must not be blank&quot;))</span>
+<span class="fc" id="L27">                .findFirst()</span>
+<span class="fc" id="L28">                .orElse(ex.getBindingResult().getFieldErrors().get(0));</span>
+<span class="fc" id="L29">        String field = error.getField();</span>
+<span class="fc" id="L30">        String defaultMessage = error.getDefaultMessage();</span>
+
+<span class="fc bfc" id="L32" title="All 4 branches covered.">        boolean isTooLong = defaultMessage != null &amp;&amp; defaultMessage.contains(&quot;maximum length&quot;);</span>
+        String code;
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (&quot;num1&quot;.equals(field)) {</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">            code = isTooLong ? &quot;NUM1_TOO_LONG&quot; : &quot;INVALID_NUM1&quot;;</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        } else if (&quot;num2&quot;.equals(field)) {</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">            code = isTooLong ? &quot;NUM2_TOO_LONG&quot; : &quot;INVALID_NUM2&quot;;</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        } else if (&quot;includeSteps&quot;.equals(field)) {</span>
+<span class="fc" id="L39">            code = &quot;INVALID_INCLUDE_STEPS&quot;;</span>
+        } else {
+<span class="fc" id="L41">            code = &quot;INVALID_REQUEST&quot;;</span>
+        }
+
+<span class="fc" id="L44">        ProblemDetailResponse problem = new ProblemDetailResponse(</span>
+                PROBLEM_BASE_URL,
+                &quot;Invalid request&quot;,
+<span class="fc" id="L47">                HttpStatus.BAD_REQUEST.value(),</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">                defaultMessage != null ? defaultMessage : &quot;Invalid request parameter&quot;,</span>
+                code
+        );
+<span class="fc" id="L51">        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(problem);</span>
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity&lt;ProblemDetailResponse&gt; handleMalformedJson(HttpMessageNotReadableException ex) {
+<span class="fc" id="L56">        ProblemDetailResponse problem = new ProblemDetailResponse(</span>
+                PROBLEM_BASE_URL,
+                &quot;Invalid request&quot;,
+<span class="fc" id="L59">                HttpStatus.BAD_REQUEST.value(),</span>
+                &quot;Request body is invalid&quot;,
+                &quot;MALFORMED_REQUEST&quot;
+        );
+<span class="fc" id="L63">        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(problem);</span>
+    }
+
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public ResponseEntity&lt;ProblemDetailResponse&gt; handleMethodNotSupported(HttpRequestMethodNotSupportedException ex) {
+<span class="fc" id="L68">        ProblemDetailResponse problem = new ProblemDetailResponse(</span>
+                PROBLEM_BASE_URL,
+                &quot;Method Not Allowed&quot;,
+<span class="fc" id="L71">                HttpStatus.METHOD_NOT_ALLOWED.value(),</span>
+                &quot;HTTP method is not supported&quot;,
+                &quot;METHOD_NOT_ALLOWED&quot;
+        );
+<span class="fc" id="L75">        return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body(problem);</span>
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity&lt;ProblemDetailResponse&gt; handleIllegalArgument(IllegalArgumentException ex) {
+<span class="fc" id="L80">        ProblemDetailResponse problem = new ProblemDetailResponse(</span>
+                PROBLEM_BASE_URL,
+                &quot;Invalid request&quot;,
+<span class="fc" id="L83">                HttpStatus.BAD_REQUEST.value(),</span>
+<span class="fc" id="L84">                ex.getMessage(),</span>
+                &quot;INVALID_REQUEST&quot;
+        );
+<span class="fc" id="L87">        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(problem);</span>
+    }
+
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ResponseEntity&lt;ProblemDetailResponse&gt; handleNoResourceFound(NoResourceFoundException ex) {
+<span class="fc" id="L92">        ProblemDetailResponse problem = new ProblemDetailResponse(</span>
+                &quot;https://my-big-number.example/problems/not-found&quot;,
+                &quot;Not Found&quot;,
+<span class="fc" id="L95">                HttpStatus.NOT_FOUND.value(),</span>
+<span class="fc" id="L96">                ex.getMessage(),</span>
+                &quot;RESOURCE_NOT_FOUND&quot;
+        );
+<span class="fc" id="L99">        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(problem);</span>
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity&lt;ProblemDetailResponse&gt; handleInternalError(Exception ex) {
+<span class="fc" id="L104">        LOGGER.log(Level.SEVERE, &quot;Unexpected error occurred during calculation&quot;, ex);</span>
+<span class="fc" id="L105">        ProblemDetailResponse problem = new ProblemDetailResponse(</span>
+                &quot;https://my-big-number.example/problems/internal-error&quot;,
+                &quot;Internal Server Error&quot;,
+<span class="fc" id="L108">                HttpStatus.INTERNAL_SERVER_ERROR.value(),</span>
+                &quot;An unexpected error occurred&quot;,
+                &quot;INTERNAL_ERROR&quot;
+        );
+<span class="fc" id="L112">        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(problem);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

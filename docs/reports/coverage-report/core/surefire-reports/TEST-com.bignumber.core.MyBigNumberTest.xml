@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.bignumber.core.MyBigNumberTest" time="0.445" tests="50" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\my-big-number\my-big-number-core\target\test-classes;C:\my-big-number\my-big-number-core\target\classes;C:\Users\Skylap.vn\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\Skylap.vn\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\Skylap.vn\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Skylap.vn\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\Skylap.vn\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Skylap.vn\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;C:\Users\Skylap.vn\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\Skylap.vn\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Asia/Bangkok"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17\bin"/>
+    <property name="sun.java.command" value="C:\Users\Skylap.vn\AppData\Local\Temp\surefire14147854023008157368\surefirebooter-20260923162904385_3.jar C:\Users\Skylap.vn\AppData\Local\Temp\surefire14147854023008157368 2026-09-23T16-29-04_222-jvmRun1 surefire-20260923162904385_1tmp surefire_0-20260923162904385_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\my-big-number\my-big-number-core\target\test-classes;C:\my-big-number\my-big-number-core\target\classes;C:\Users\Skylap.vn\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\Skylap.vn\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\Skylap.vn\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Skylap.vn\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\Skylap.vn\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Skylap.vn\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;C:\Users\Skylap.vn\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\Skylap.vn\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\Skylap.vn"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2024-07-16"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-17"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\my-big-number\my-big-number-core"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\Skylap.vn\AppData\Local\Temp\surefire14147854023008157368\surefirebooter-20260923162904385_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.12+8-LTS-286"/>
+    <property name="user.name" value="Skylap.vn"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\Skylap.vn\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\Skylap.vn\AppData\Local\Temp\"/>
+    <property name="java.version" value="17.0.12"/>
+    <property name="user.dir" value="C:\my-big-number\my-big-number-core"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-17\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Users/Skylap.vn/.gemini/antigravity-ide/bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\TortoiseGit\bin;C:\Program Files\GitHub CLI\;C:\Users\Skylap.vn\AppData\Local\Programs\Python\Launcher\;C:\Users\Skylap.vn\AppData\Local\Microsoft\WindowsApps;C:\Users\Skylap.vn\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Skylap.vn\AppData\Local\GitHubDesktop\bin;C:\Users\Skylap.vn\AppData\Local\Programs\Antigravity IDE\bin;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="17.0.12+8-LTS-286"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="testCalculationResultRecordMethods" classname="com.bignumber.core.MyBigNumberTest" time="0.095">
+    <system-err><![CDATA[Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B?t ??u phép tính c?ng: 1234 + 897
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 1: L?y 4 c?ng v?i 7 ???c 11. L?u 1 vào k?t qu? t?m "1". Ghi nh? 1.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 2: L?y 3 c?ng v?i 9 ???c 12. C?ng ti?p v?i nh? 1 ???c 13. L?u 3 vào k?t qu? t?m "31". Ghi nh? 1.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 3: L?y 2 c?ng v?i 8 ???c 10. C?ng ti?p v?i nh? 1 ???c 11. L?u 1 vào k?t qu? t?m "131". Ghi nh? 1.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 4: L?y 1 c?ng v?i 0 ???c 1. C?ng ti?p v?i nh? 1 ???c 2. L?u 2 vào k?t qu? t?m "2131". Ghi nh? 0.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: K?t qu? cu?i cùng: 2131
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B?t ??u phép tính c?ng: 1234 + 897
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 1: L?y 4 c?ng v?i 7 ???c 11. L?u 1 vào k?t qu? t?m "1". Ghi nh? 1.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 2: L?y 3 c?ng v?i 9 ???c 12. C?ng ti?p v?i nh? 1 ???c 13. L?u 3 vào k?t qu? t?m "31". Ghi nh? 1.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 3: L?y 2 c?ng v?i 8 ???c 10. C?ng ti?p v?i nh? 1 ???c 11. L?u 1 vào k?t qu? t?m "131". Ghi nh? 1.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 4: L?y 1 c?ng v?i 0 ???c 1. C?ng ti?p v?i nh? 1 ???c 2. L?u 2 vào k?t qu? t?m "2131". Ghi nh? 0.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: K?t qu? cu?i cùng: 2131
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B?t ??u phép tính c?ng: 999 + 1
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 1: L?y 9 c?ng v?i 1 ???c 10. L?u 0 vào k?t qu? t?m "0". Ghi nh? 1.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 2: L?y 9 c?ng v?i 0 ???c 9. C?ng ti?p v?i nh? 1 ???c 10. L?u 0 vào k?t qu? t?m "00". Ghi nh? 1.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 3: L?y 9 c?ng v?i 0 ???c 9. C?ng ti?p v?i nh? 1 ???c 10. L?u 0 vào k?t qu? t?m "000". Ghi nh? 1.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c cu?i: H? s? nh? 1 vào ??u k?t qu? thu ???c: "1000".
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: K?t qu? cu?i cùng: 1000
+]]></system-err>
+  </testcase>
+  <testcase name="testSumWithProgressWithFinalCarryAndGetters" classname="com.bignumber.core.MyBigNumberTest" time="0.005">
+    <system-err><![CDATA[Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B?t ??u phép tính c?ng: 999 + 1
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 1: L?y 9 c?ng v?i 1 ???c 10. L?u 0 vào k?t qu? t?m "0". Ghi nh? 1.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 2: L?y 9 c?ng v?i 0 ???c 9. C?ng ti?p v?i nh? 1 ???c 10. L?u 0 vào k?t qu? t?m "00". Ghi nh? 1.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 3: L?y 9 c?ng v?i 0 ???c 9. C?ng ti?p v?i nh? 1 ???c 10. L?u 0 vào k?t qu? t?m "000". Ghi nh? 1.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c cu?i: H? s? nh? 1 vào ??u k?t qu? thu ???c: "1000".
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: K?t qu? cu?i cùng: 1000
+]]></system-err>
+  </testcase>
+  <testcase name="testWhenLoggingInfoIsDisabled" classname="com.bignumber.core.MyBigNumberTest" time="0.003"/>
+  <testcase name="testExtremeLengthDifferences(String, String, String, int, int)[1]" classname="com.bignumber.core.MyBigNumberTest" time="0.025"/>
+  <testcase name="testExtremeLengthDifferences(String, String, String, int, int)[2]" classname="com.bignumber.core.MyBigNumberTest" time="0.002"/>
+  <testcase name="testExtremeLengthDifferences(String, String, String, int, int)[3]" classname="com.bignumber.core.MyBigNumberTest" time="0.001"/>
+  <testcase name="testExtremeLengthDifferences(String, String, String, int, int)[4]" classname="com.bignumber.core.MyBigNumberTest" time="0.001"/>
+  <testcase name="testExtremeLengthDifferences(String, String, String, int, int)[5]" classname="com.bignumber.core.MyBigNumberTest" time="0.002"/>
+  <testcase name="testDynamicLargeLengthDifference" classname="com.bignumber.core.MyBigNumberTest" time="0.002"/>
+  <testcase name="testCalculationStepMethods" classname="com.bignumber.core.MyBigNumberTest" time="0.002"/>
+  <testcase name="testModerateLengthDifferences(String, String, String, int, int)[1]" classname="com.bignumber.core.MyBigNumberTest" time="0.001"/>
+  <testcase name="testModerateLengthDifferences(String, String, String, int, int)[2]" classname="com.bignumber.core.MyBigNumberTest" time="0.001"/>
+  <testcase name="testModerateLengthDifferences(String, String, String, int, int)[3]" classname="com.bignumber.core.MyBigNumberTest" time="0.001"/>
+  <testcase name="testModerateLengthDifferences(String, String, String, int, int)[4]" classname="com.bignumber.core.MyBigNumberTest" time="0.001"/>
+  <testcase name="testModerateLengthDifferences(String, String, String, int, int)[5]" classname="com.bignumber.core.MyBigNumberTest" time="0.001"/>
+  <testcase name="testModerateLengthDifferences(String, String, String, int, int)[6]" classname="com.bignumber.core.MyBigNumberTest" time="0.001"/>
+  <testcase name="testModerateLengthDifferences(String, String, String, int, int)[7]" classname="com.bignumber.core.MyBigNumberTest" time="0.001"/>
+  <testcase name="testModerateLengthDifferences(String, String, String, int, int)[8]" classname="com.bignumber.core.MyBigNumberTest" time="0.001"/>
+  <testcase name="testModerateLengthDifferences(String, String, String, int, int)[9]" classname="com.bignumber.core.MyBigNumberTest" time="0.001"/>
+  <testcase name="testModerateLengthDifferences(String, String, String, int, int)[10]" classname="com.bignumber.core.MyBigNumberTest" time="0.001"/>
+  <testcase name="testModerateLengthDifferences(String, String, String, int, int)[11]" classname="com.bignumber.core.MyBigNumberTest" time="0.001"/>
+  <testcase name="testModerateLengthDifferences(String, String, String, int, int)[12]" classname="com.bignumber.core.MyBigNumberTest" time="0.002"/>
+  <testcase name="testVariousValidCases(String, String, String)[1]" classname="com.bignumber.core.MyBigNumberTest" time="0.001"/>
+  <testcase name="testVariousValidCases(String, String, String)[2]" classname="com.bignumber.core.MyBigNumberTest" time="0.0"/>
+  <testcase name="testVariousValidCases(String, String, String)[3]" classname="com.bignumber.core.MyBigNumberTest" time="0.001"/>
+  <testcase name="testVariousValidCases(String, String, String)[4]" classname="com.bignumber.core.MyBigNumberTest" time="0.001"/>
+  <testcase name="testVariousValidCases(String, String, String)[5]" classname="com.bignumber.core.MyBigNumberTest" time="0.001"/>
+  <testcase name="testVariousValidCases(String, String, String)[6]" classname="com.bignumber.core.MyBigNumberTest" time="0.001"/>
+  <testcase name="testSameLengthVariousSizes(String, String, String, int)[1]" classname="com.bignumber.core.MyBigNumberTest" time="0.001"/>
+  <testcase name="testSameLengthVariousSizes(String, String, String, int)[2]" classname="com.bignumber.core.MyBigNumberTest" time="0.001"/>
+  <testcase name="testSameLengthVariousSizes(String, String, String, int)[3]" classname="com.bignumber.core.MyBigNumberTest" time="0.002"/>
+  <testcase name="testSameLengthVariousSizes(String, String, String, int)[4]" classname="com.bignumber.core.MyBigNumberTest" time="0.002"/>
+  <testcase name="testSameLengthVariousSizes(String, String, String, int)[5]" classname="com.bignumber.core.MyBigNumberTest" time="0.001"/>
+  <testcase name="testSameLengthVariousSizes(String, String, String, int)[6]" classname="com.bignumber.core.MyBigNumberTest" time="0.001"/>
+  <testcase name="testSumWithProgressWithLengthDifference" classname="com.bignumber.core.MyBigNumberTest" time="0.003">
+    <system-err><![CDATA[Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B?t ??u phép tính c?ng: 10000 + 5
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 1: L?y 0 c?ng v?i 5 ???c 5. L?u 5 vào k?t qu? t?m "5". Ghi nh? 0.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 2: L?y 0 c?ng v?i 0 ???c 0. L?u 0 vào k?t qu? t?m "05". Ghi nh? 0.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 3: L?y 0 c?ng v?i 0 ???c 0. L?u 0 vào k?t qu? t?m "005". Ghi nh? 0.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 4: L?y 0 c?ng v?i 0 ???c 0. L?u 0 vào k?t qu? t?m "0005". Ghi nh? 0.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 5: L?y 1 c?ng v?i 0 ???c 1. L?u 1 vào k?t qu? t?m "10005". Ghi nh? 0.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: K?t qu? cu?i cùng: 10005
+]]></system-err>
+  </testcase>
+  <testcase name="testExampleCase" classname="com.bignumber.core.MyBigNumberTest" time="0.001"/>
+  <testcase name="testInvalidInputsWithLettersAndSymbols(String, String)[1]" classname="com.bignumber.core.MyBigNumberTest" time="0.008">
+    <system-err><![CDATA[Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sum
+SEVERE: L?I: Chu?i 1 ch?a ký t? không h?p l? 'a' t?i v? trí 2.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B?t ??u phép tính c?ng: 12a4 + 897
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 1: L?y 4 c?ng v?i 7 ???c 11. L?u 1 vào k?t qu? t?m "1". Ghi nh? 1.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+SEVERE: L?I: Chu?i 1 ch?a ký t? không h?p l? 'a' t?i v? trí 2.
+]]></system-err>
+  </testcase>
+  <testcase name="testInvalidInputsWithLettersAndSymbols(String, String)[2]" classname="com.bignumber.core.MyBigNumberTest" time="0.006">
+    <system-err><![CDATA[Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sum
+SEVERE: L?I: Chu?i 2 ch?a ký t? không h?p l? 'b' t?i v? trí 1.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B?t ??u phép tính c?ng: 1234 + 8b7
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 1: L?y 4 c?ng v?i 7 ???c 11. L?u 1 vào k?t qu? t?m "1". Ghi nh? 1.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+SEVERE: L?I: Chu?i 2 ch?a ký t? không h?p l? 'b' t?i v? trí 1.
+]]></system-err>
+  </testcase>
+  <testcase name="testInvalidInputsWithLettersAndSymbols(String, String)[3]" classname="com.bignumber.core.MyBigNumberTest" time="0.005">
+    <system-err><![CDATA[Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sum
+SEVERE: L?I: Chu?i 1 ch?a ký t? không h?p l? 'c' t?i v? trí 2.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B?t ??u phép tính c?ng: abc + 123
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+SEVERE: L?I: Chu?i 1 ch?a ký t? không h?p l? 'c' t?i v? trí 2.
+]]></system-err>
+  </testcase>
+  <testcase name="testInvalidInputsWithLettersAndSymbols(String, String)[4]" classname="com.bignumber.core.MyBigNumberTest" time="0.002">
+    <system-err><![CDATA[Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sum
+SEVERE: L?I: Chu?i 2 ch?a ký t? không h?p l? 'z' t?i v? trí 2.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B?t ??u phép tính c?ng: 123 + xyz
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+SEVERE: L?I: Chu?i 2 ch?a ký t? không h?p l? 'z' t?i v? trí 2.
+]]></system-err>
+  </testcase>
+  <testcase name="testInvalidInputsWithLettersAndSymbols(String, String)[5]" classname="com.bignumber.core.MyBigNumberTest" time="0.008">
+    <system-err><![CDATA[Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sum
+SEVERE: L?I: Chu?i 1 ch?a ký t? không h?p l? '.' t?i v? trí 2.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B?t ??u phép tính c?ng: 12.3 + 456
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 1: L?y 3 c?ng v?i 6 ???c 9. L?u 9 vào k?t qu? t?m "9". Ghi nh? 0.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+SEVERE: L?I: Chu?i 1 ch?a ký t? không h?p l? '.' t?i v? trí 2.
+]]></system-err>
+  </testcase>
+  <testcase name="testInvalidInputsWithLettersAndSymbols(String, String)[6]" classname="com.bignumber.core.MyBigNumberTest" time="0.002">
+    <system-err><![CDATA[Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sum
+SEVERE: L?I: Chu?i 2 ch?a ký t? không h?p l? '.' t?i v? trí 2.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B?t ??u phép tính c?ng: 456 + 12.3
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 1: L?y 6 c?ng v?i 3 ???c 9. L?u 9 vào k?t qu? t?m "9". Ghi nh? 0.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+SEVERE: L?I: Chu?i 2 ch?a ký t? không h?p l? '.' t?i v? trí 2.
+]]></system-err>
+  </testcase>
+  <testcase name="testInvalidInputsWithLettersAndSymbols(String, String)[7]" classname="com.bignumber.core.MyBigNumberTest" time="0.002">
+    <system-err><![CDATA[Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sum
+SEVERE: L?I: Chu?i 1 ch?a ký t? không h?p l? '-' t?i v? trí 0.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B?t ??u phép tính c?ng: -123 + 456
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 1: L?y 3 c?ng v?i 6 ???c 9. L?u 9 vào k?t qu? t?m "9". Ghi nh? 0.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 2: L?y 2 c?ng v?i 5 ???c 7. L?u 7 vào k?t qu? t?m "79". Ghi nh? 0.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 3: L?y 1 c?ng v?i 4 ???c 5. L?u 5 vào k?t qu? t?m "579". Ghi nh? 0.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+SEVERE: L?I: Chu?i 1 ch?a ký t? không h?p l? '-' t?i v? trí 0.
+]]></system-err>
+  </testcase>
+  <testcase name="testInvalidInputsWithLettersAndSymbols(String, String)[8]" classname="com.bignumber.core.MyBigNumberTest" time="0.003">
+    <system-err><![CDATA[Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sum
+SEVERE: L?I: Chu?i 2 ch?a ký t? không h?p l? '-' t?i v? trí 0.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B?t ??u phép tính c?ng: 456 + -123
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 1: L?y 6 c?ng v?i 3 ???c 9. L?u 9 vào k?t qu? t?m "9". Ghi nh? 0.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 2: L?y 5 c?ng v?i 2 ???c 7. L?u 7 vào k?t qu? t?m "79". Ghi nh? 0.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 3: L?y 4 c?ng v?i 1 ???c 5. L?u 5 vào k?t qu? t?m "579". Ghi nh? 0.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+SEVERE: L?I: Chu?i 2 ch?a ký t? không h?p l? '-' t?i v? trí 0.
+]]></system-err>
+  </testcase>
+  <testcase name="testInvalidInputsWithLettersAndSymbols(String, String)[9]" classname="com.bignumber.core.MyBigNumberTest" time="0.006">
+    <system-err><![CDATA[Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sum
+SEVERE: L?I: Chu?i 2 ch?a ký t? không h?p l? ' ' t?i v? trí 2.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B?t ??u phép tính c?ng: 123 + 45 6
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 1: L?y 3 c?ng v?i 6 ???c 9. L?u 9 vào k?t qu? t?m "9". Ghi nh? 0.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+SEVERE: L?I: Chu?i 2 ch?a ký t? không h?p l? ' ' t?i v? trí 2.
+]]></system-err>
+  </testcase>
+  <testcase name="testInvalidInputsWithLettersAndSymbols(String, String)[10]" classname="com.bignumber.core.MyBigNumberTest" time="0.004">
+    <system-err><![CDATA[Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sum
+SEVERE: L?I: Chu?i 1 ch?a ký t? không h?p l? ' ' t?i v? trí 2.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B?t ??u phép tính c?ng: 45 6 + 123
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 1: L?y 6 c?ng v?i 3 ???c 9. L?u 9 vào k?t qu? t?m "9". Ghi nh? 0.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+SEVERE: L?I: Chu?i 1 ch?a ký t? không h?p l? ' ' t?i v? trí 2.
+]]></system-err>
+  </testcase>
+  <testcase name="testInvalidInputsWithLettersAndSymbols(String, String)[11]" classname="com.bignumber.core.MyBigNumberTest" time="0.004">
+    <system-err><![CDATA[Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sum
+SEVERE: L?I: Chu?i 1 ch?a ký t? không h?p l? '$' t?i v? trí 2.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B?t ??u phép tính c?ng: @#$ + 123
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+SEVERE: L?I: Chu?i 1 ch?a ký t? không h?p l? '$' t?i v? trí 2.
+]]></system-err>
+  </testcase>
+  <testcase name="testInvalidInputsWithLettersAndSymbols(String, String)[12]" classname="com.bignumber.core.MyBigNumberTest" time="0.002">
+    <system-err><![CDATA[Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sum
+SEVERE: L?I: Chu?i 2 ch?a ký t? không h?p l? '$' t?i v? trí 2.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B?t ??u phép tính c?ng: 123 + @#$
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+SEVERE: L?I: Chu?i 2 ch?a ký t? không h?p l? '$' t?i v? trí 2.
+]]></system-err>
+  </testcase>
+  <testcase name="testNullAndEmptyInputs" classname="com.bignumber.core.MyBigNumberTest" time="0.005">
+    <system-err><![CDATA[Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber validateInputs
+SEVERE: L?I: Tham s? truy?n vào không ???c là null.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber validateInputs
+SEVERE: L?I: Tham s? truy?n vào không ???c là null.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber validateInputs
+SEVERE: L?I: Chu?i s? không ???c ?? tr?ng.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber validateInputs
+SEVERE: L?I: Chu?i s? không ???c ?? tr?ng.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber validateInputs
+SEVERE: L?I: Tham s? truy?n vào không ???c là null.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber validateInputs
+SEVERE: L?I: Tham s? truy?n vào không ???c là null.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber validateInputs
+SEVERE: L?I: Chu?i s? không ???c ?? tr?ng.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber validateInputs
+SEVERE: L?I: Chu?i s? không ???c ?? tr?ng.
+]]></system-err>
+  </testcase>
+  <testcase name="testSumWithProgress" classname="com.bignumber.core.MyBigNumberTest" time="0.004">
+    <system-err><![CDATA[Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B?t ??u phép tính c?ng: 1234 + 897
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 1: L?y 4 c?ng v?i 7 ???c 11. L?u 1 vào k?t qu? t?m "1". Ghi nh? 1.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 2: L?y 3 c?ng v?i 9 ???c 12. C?ng ti?p v?i nh? 1 ???c 13. L?u 3 vào k?t qu? t?m "31". Ghi nh? 1.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 3: L?y 2 c?ng v?i 8 ???c 10. C?ng ti?p v?i nh? 1 ???c 11. L?u 1 vào k?t qu? t?m "131". Ghi nh? 1.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: B??c 4: L?y 1 c?ng v?i 0 ???c 1. C?ng ti?p v?i nh? 1 ???c 2. L?u 2 vào k?t qu? t?m "2131". Ghi nh? 0.
+Sep 23, 2026 4:29:05 PM com.bignumber.core.MyBigNumber sumWithProgress
+INFO: K?t qu? cu?i cùng: 2131
+]]></system-err>
+  </testcase>
+</testsuite>
