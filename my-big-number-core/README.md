@@ -2,6 +2,12 @@
 
 Module thư viện lõi cài đặt giải thuật cộng hai số nguyên lớn dưới dạng chuỗi ký tự theo phương pháp mô phỏng cách tính đặt cột dọc của học sinh tiểu học. Module được đóng gói thành thư viện chuẩn (`.jar`), sẵn sàng bàn giao cho các nhóm khác tái sử dụng.
 
+> 📖 **Dành cho Lập trình viên:** Xem tài liệu kỹ thuật, quy chuẩn và báo cáo kiểm thử tại:
+> * [**API Reference (Đặc tả chi tiết các hàm, kiểu dữ liệu, ngoại lệ)**](docs/API_REFERENCE.md)
+> * [**Thuật toán & Phân tích tối ưu hiệu năng**](docs/ALGORITHM_AND_PERFORMANCE.md)
+> * [**Quy chuẩn Lập trình Dự án (Coding Rules)**](docs/coding-rules.md)
+> * [**Báo cáo độ bao phủ kiểm thử (Test Coverage: 100% Line Coverage)**](coverage-report/README.md)
+
 ---
 
 ## 1. Mục lục
@@ -58,10 +64,12 @@ Bộ kiểm thử nằm tại `src/test/java/com/bignumber/core/MyBigNumberTest.
 
 1. **Ca kiểm thử mẫu:** Khẳng định kết quả phép toán `1234 + 897 = 2131`.
 2. **Ca kiểm thử tham số hóa (`@ParameterizedTest` với `@CsvSource`):**
-   * Phép cộng với `0` (`0 + 0 = 0`).
-   * Phép cộng nhớ nhiều hàng liên tiếp (`999 + 1 = 1000`).
-   * Phép cộng số nguyên siêu lớn vượt ngưỡng 64-bit ($> 20$ chữ số).
-   * Phép cộng hai số có số lượng chữ số chênh lệch lớn.
+   * Phép cộng với `0` (`0 + 0 = 0`), phép cộng nhớ nhiều hàng liên tiếp (`999 + 1 = 1000`).
+   * **Độ lệch độ dài vừa phải:** Chênh lệch từ 1 đến 8 chữ số (1 vs 2, 1 vs 4, 2 vs 5, 3 vs 6, 4 vs 8 chữ số và ngược lại).
+   * **Độ lệch độ dài cực lớn:** Chênh lệch từ 20 đến 50 chữ số (1 vs 20, 1 vs 50, 5 vs 30, 10 vs 40 chữ số với nhớ dồn chuỗi sang hàng cao nhất).
+   * **Cùng độ dài ở nhiều kích cỡ:** 1, 2, 5, 10, 15, 30 chữ số.
+   * **Độ dài động siêu lớn:** Tự động sinh chuỗi 100 chữ số cộng chuỗi 5 chữ số.
+   * **Kiểm thử chi tiết bước tính khi lệch độ dài:** Kiểm tra `sumWithProgress` cho chuỗi 5 chữ số và 1 chữ số trả về đúng 5 bước tính.
 3. **Ca kiểm thử ngoại lệ:** Khẳng định ném `IllegalArgumentException` khi gặp dữ liệu không hợp lệ (`"12a4"`, `"abc"`, `"12.3"`, `"-123"`, `"12 3"`, `"@#$"`).
 
 ---
