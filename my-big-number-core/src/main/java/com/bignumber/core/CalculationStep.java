@@ -31,4 +31,30 @@ public class CalculationStep {
     public int getCarry() {
         return carry;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CalculationStep that = (CalculationStep) o;
+        return stepNumber == that.stepNumber &&
+                carry == that.carry &&
+                java.util.Objects.equals(description, that.description) &&
+                java.util.Objects.equals(intermediateResult, that.intermediateResult);
+    }
+
+    @Override
+    public int hashCode() {
+        return java.util.Objects.hash(stepNumber, description, intermediateResult, carry);
+    }
+
+    @Override
+    public String toString() {
+        return "CalculationStep{" +
+                "stepNumber=" + stepNumber +
+                ", description='" + description + '\'' +
+                ", intermediateResult='" + intermediateResult + '\'' +
+                ", carry=" + carry +
+                '}';
+    }
 }
